@@ -1,31 +1,13 @@
-/*
- *
- * The p5.RoverCam library - First-Person 3D CameraControl for p5.js and WEBGL.
- *
- *   Copyright © 2020 by p5.RoverCam authors
- *
- *   Source: https://github.com/freshfork/p5.RoverCam
- *
- *   MIT License: https://opensource.org/licenses/MIT
- *
- *
- * explanatory note:
- *
- * p5.RoverCam is a derivative of the QueasyCam Library by Josh Castle,
- * ported to JavaScript for p5.js from github.com/jrc03c/queasycam
- *
- */
-
 
 // First, define a callback system
 // a location to store the class instances
-var __RoverCam_cbq = [];
+var __PlayerController_cbq = [];
 
 // let p5 know that we want a callback at the end of the draw loop.
 // we iteratively call each item in the queue with its own context
-p5.prototype.registerMethod('post', ()=>{for(let i of __RoverCam_cbq)i.draw.call(i)});
+p5.prototype.registerMethod('post', ()=>{for(let i of __PlayerController_cbq)i.draw.call(i)});
 
-class RoverCam {
+class PlayerController {
   constructor(){
     this.speed = 0.1;
     this.sensitivity = 0.02;
@@ -47,7 +29,7 @@ class RoverCam {
     this.width = 0;
     this.height = 0;
     // push 'this' onto a callback queue
-    __RoverCam_cbq.push(this);
+    __PlayerController_cbq.push(this);
   }
   
   // Application can override the following method

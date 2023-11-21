@@ -135,7 +135,7 @@ class Mansion {
 }
 
 
-class Player extends RoverCam {
+class Player extends PlayerController {
   constructor() {
     super();
     this.dimensions = createVector(1, 3, 1);
@@ -197,6 +197,7 @@ var player, mansion,
   canvas;
 
 function preload() {
+  // TODO loadShader() here
   //TODO For the help-gui or maybe stat-gui // f = loadFont();
 }
 
