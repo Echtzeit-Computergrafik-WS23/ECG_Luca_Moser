@@ -89,18 +89,28 @@ class Mansion {
     for (let i = 0; i < size; i++) {
       this.blocks[i] = new Array(size);
       for (let j = 0; j < size; j++) {
-        let x = i * 50; 
+        let x = i * 5; 
         let y = 0;
-        let z = j * 50; 
-        this.blocks[i][j] = new Block(x, y, z, 50, 50, 50); 
+        let z = j * 5; 
+        this.blocks[i][j] = new Block(x, y, z, 5, 5, 5); 
       }
     }
 
     this.start = this.blocks[1][1];
     this.blocks[1][1].fillColor = color(63, 127, 63);
     var m = [
-      [1,1],
-      [1,1]
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
+      [0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0],
+      [0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0],
+      [0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0],
+      [0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0],
+      [0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0],
+      [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
     
     
@@ -108,7 +118,7 @@ class Mansion {
       for (let j = 1; j < size - 1; j++)
         if (m[i][j]) this.blocks[i][j].moveDown();
         else this.blocks[i][j].fillColor = color(127);
-    //this.blocks[3][3].fillColor = color(127, 63, 63); TODO: GOAL/END block currently hardcoded should be generated automatically ? Maybe later
+    this.blocks[3][3].fillColor = color(127, 63, 63);// TODO: GOAL/END block currently hardcoded should be generated automatically ? Maybe later
   }
 
   // Updates Collison with blocks
@@ -205,7 +215,7 @@ function setup() {
   
   canvas = createCanvas(windowWidth, windowHeight, WEBGL);
   player = new Player();
-  mansion = new Mansion(2); 
+  mansion = new Mansion(12); 
   mansion.setPlayerAtStart(player);
   frameRate(60);
   strokeWeight(2);
